@@ -6,7 +6,7 @@ snooper_beacon_context = import_module("../snooper/snooper_beacon_context.star")
 
 SNOOPER_BEACON_RPC_PORT_NUM = 8562
 SNOOPER_BEACON_RPC_PORT_ID = "http"
-SNOOPER_BINARY_COMMAND = "./json_rpc_snoop"
+SNOOPER_BINARY_COMMAND = "/usr/local/bin/kaiyote"
 
 SNOOPER_USED_PORTS = {
     SNOOPER_BEACON_RPC_PORT_ID: shared_utils.new_port_spec(
@@ -66,14 +66,10 @@ def get_config(
     docker_cache_params,
     public_ports,
 ):
-    beacon_rpc_port_num = "{0}".format(
-        cl_context.beacon_http_url,
-    )
     cmd = [
         SNOOPER_BINARY_COMMAND,
-        "-b=0.0.0.0",
-        "-p={0}".format(SNOOPER_BEACON_RPC_PORT_NUM),
-        "{0}".format(beacon_rpc_port_num),
+        "--bind=0.0.0.0:{}".format(SNOOPER_BEACON_RPC_PORT_NUM),
+        "--target={}".format(cl_context.beacon_http_url),
     ]
 
     return ServiceConfig(

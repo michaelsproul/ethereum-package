@@ -95,7 +95,7 @@ COMMIT_BOOST_MEV_TYPE = "commit-boost"
 DEFAULT_DORA_IMAGE = "ethpandaops/dora:latest"
 DEFAULT_SPAMOOR_IMAGE = "ethpandaops/spamoor:latest"
 DEFAULT_ASSERTOOR_IMAGE = "ethpandaops/assertoor:latest"
-DEFAULT_SNOOPER_IMAGE = "ethpandaops/rpc-snooper:latest"
+DEFAULT_SNOOPER_IMAGE = "michaelsproul/kaiyote:latest"
 DEFAULT_ETHEREUM_GENESIS_GENERATOR_IMAGE = (
     "ethpandaops/ethereum-genesis-generator:5.0.0"
 )

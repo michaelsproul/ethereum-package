@@ -8,7 +8,7 @@ SNOOPER_ENGINE_RPC_PORT_NUM = 8561
 SNOOPER_EL_ENGINE_RPC_PORT_ID = "engine-rpc"
 SNOOPER_EL_RPC_PORT_NUM = 8562
 SNOOPER_EL_RPC_PORT_ID = "http"
-SNOOPER_BINARY_COMMAND = "./json_rpc_snoop"
+SNOOPER_BINARY_COMMAND = "/usr/local/bin/kaiyote"
 
 # The min/max CPU/memory that snooper can use
 MIN_CPU = 10
@@ -93,13 +93,12 @@ def get_config(
     )
     cmd = [
         SNOOPER_BINARY_COMMAND,
-        "-b=0.0.0.0",
-        "-p={0}".format(
+        "--bind=0.0.0.0:{}".format(
             SNOOPER_ENGINE_RPC_PORT_NUM
             if "engine" in service_name
             else SNOOPER_EL_RPC_PORT_NUM
         ),
-        "{0}".format(engine_port_num if "engine" in service_name else rpc_port_num),
+        "--target={}".format(engine_port_num if "engine" in service_name else rpc_port_num)
     ]
 
     return ServiceConfig(
