@@ -154,6 +154,7 @@ def get_config(
             ASSERTOOR_CONFIG_MOUNT_DIRPATH_ON_SERVICE: config_files_artifact_name,
             ASSERTOOR_TESTS_MOUNT_DIRPATH_ON_SERVICE: tests_config_artifacts_name,
             VALIDATOR_RANGES_MOUNT_DIRPATH_ON_SERVICE: VALIDATOR_RANGES_ARTIFACT_NAME,
+            "/var/run/docker.sock": "/var/run/docker.sock"
         },
         cmd=["--config", config_file_path],
         min_cpu=MIN_CPU,
